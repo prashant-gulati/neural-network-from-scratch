@@ -4,3 +4,4 @@ __pycache__/
 *.pyo
 *.csv
 .DS_Store
+.vscode
