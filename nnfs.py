@@ -75,7 +75,7 @@ def one_hot_converter(Y):
   one_hot_Y[np.arange(Y.size), Y] = 1
   return one_hot_Y.T
 
-# A0 (784 x 1) = X (784 x 1)
+# X (784 x 1)
 # Z1 (10 x 1) = W1*A0 (10 x 784)*(784 x 1) + B1 (10 x 1)
 # A1 (10 x 1) = RELU(Z1) (10 x 1)
 # Z2 (10 x 1) = W2*A1(10 x 10)*(10 x 1) + B2 (10 x 1)
@@ -109,7 +109,7 @@ def forward_propagation(W1, B1, W2, B2, X):
 
 # dL/dW2 = dL/dA2 * dA2/dZ2* dZ2/dW2
 # = d(-ln(A2))/dA2 * d(e^Z2/SIGMA(e^Z2))/dZ2 * d(W2.dot(A1) + B2)/dW2
-# = - Y/A2 * {A2(1-A2) for i=j; SIGMA(-A2_i*_A2_j) for i!=j} * A1
+# = - Y/A2 * {A2_i(1-A2_i) for i=j; SIGMA(-A2_i*_A2_j) for i!=j} * A1
 # = (A2 - Y) * A1^T
 # = 1/m* (A2 - Y) * A1^T
 
