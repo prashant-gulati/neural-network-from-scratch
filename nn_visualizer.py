@@ -21,7 +21,7 @@ X_train = torch.tensor(X_train.values, dtype=torch.float32)
 Y_train = torch.tensor(Y_train.values, dtype=torch.long)
 
 train_dataset = torch.utils.data.TensorDataset(X_train, Y_train)
-train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=256, shuffle=False)
+train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=256, shuffle=True)
 
 # ---- Model ----
 class MNISTNet(nn.Module):
@@ -33,6 +33,7 @@ class MNISTNet(nn.Module):
 
     def forward(self, x):
         x = torch.relu(self.fc1(x))
+        # applies a second RELU to the output before applying softmax to it
         x = torch.relu(self.fc2(x))
         return self.fc3(x)
 
@@ -48,10 +49,12 @@ correct = 0
 VIS = 20        # neurons to display per input/hidden layer
 STEP_DELAY = 0.6  # seconds between training steps (increase to slow down)
 
+# pytorch softmax - more numerically stable
 def softmax(x):
     e_x = np.exp(x - np.max(x))
     return (e_x / e_x.sum()).tolist()
 
+#
 def train_step():
     global batch_iterator, batch_count, correct
     try:
@@ -115,6 +118,7 @@ HTML = r"""<!DOCTYPE html>
 <body>
 <div id="status">Connecting...</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
 <script>
 const VIS = 20;
 const INPUT_SHOW = 5;  // neurons shown at top and bottom of input layer
