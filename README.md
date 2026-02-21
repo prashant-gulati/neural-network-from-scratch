@@ -19,13 +19,10 @@ A handbuilt neural network for MNIST digit classification — implemented in **p
 
 ```
 Input      Hidden 1   Hidden 2   Output
-784  ──►   10  ──►    10  ──►    10
-      ReLU           Softmax
+784  ──►   10  ──►    10  ──►    1
+           ReLU       Softmax
 ```
 
-- **784 input neurons** — one per pixel of a 28×28 grayscale image
-- **Two hidden layers** of 10 neurons each
-- **10 output neurons** — one per digit class (0–9), activated with Softmax
 - **Loss**: categorical cross-entropy
 - **Optimizer**: vanilla gradient descent (lr = 0.1, 1000 epochs)
 
