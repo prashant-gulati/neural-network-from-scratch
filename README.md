@@ -1,3 +1,14 @@
+---
+title: Neural Network from Scratch
+emoji: 🧠
+colorFrom: blue
+colorTo: purple
+sdk: gradio
+sdk_version: 5.0.0
+app_file: app.py
+pinned: false
+---
+
 # Neural Network from Scratch
 
 A handbuilt neural network for MNIST digit classification — implemented in **pure NumPy**, no ML frameworks. Includes a real-time training visualizer and an interactive Gradio demo.
