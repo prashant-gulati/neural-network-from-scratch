@@ -121,4 +121,4 @@ with gr.Blocks(title="Neural Network from Scratch") as demo:
         outputs=[pred_plot, pred_label],
     )
 
-demo.launch()
+demo.launch(server_name="0.0.0.0", ssr_mode=False)
